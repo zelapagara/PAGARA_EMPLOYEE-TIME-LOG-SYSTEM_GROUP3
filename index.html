@@ -3,207 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🏢 Complete Time Log System</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 500px;
-            margin: 0 auto;
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-        }
-
-        h1, h2 {
-            text-align: center;
-            color: #333;
-            margin-bottom: 20px;
-        }
-
-        h1 { font-size: 28px; }
-        h2 { font-size: 22px; }
-
-        label {
-            display: block;
-            margin: 15px 0 5px;
-            font-weight: 600;
-            color: #555;
-        }
-
-        input, button {
-            width: 100%;
-            padding: 12px;
-            margin: 8px 0;
-            border: none;
-            border-radius: 8px;
-            box-sizing: border-box;
-            font-size: 16px;
-        }
-
-        input {
-            background: #f8f9fa;
-            border: 2px solid #e9ecef;
-        }
-
-        input:focus {
-            outline: none;
-            border-color: #007bff;
-        }
-
-        button {
-            background: #007bff;
-            color: white;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        button:hover {
-            background: #0056b3;
-            transform: translateY(-2px);
-        }
-
-        .role-buttons {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin: 20px 0;
-        }
-
-        .role-btn {
-            padding: 15px;
-            font-size: 16px;
-            border: 2px solid;
-        }
-
-        .employee-role {
-            background: #28a745;
-            border-color: #28a745;
-            color: white;
-        }
-
-        .employee-role:hover {
-            background: #218838;
-        }
-
-        .admin-role {
-            background: #ffc107;
-            border-color: #ffc107;
-            color: #333;
-        }
-
-        .admin-role:hover {
-            background: #e0a800;
-        }
-
-        .section {
-            display: none;
-        }
-
-        .section.active {
-            display: block;
-        }
-
-        .user-info {
-            background: #e9ecef;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logout-btn {
-            background: #dc3545;
-            padding: 8px 16px;
-            width: auto;
-            font-size: 14px;
-        }
-
-        .logout-btn:hover {
-            background: #c82333;
-        }
-
-        .action-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .logs {
-            margin-top: 20px;
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 10px;
-            min-height: 150px;
-            font-family: 'Courier New', monospace;
-        }
-
-        .record-card {
-            background: white;
-            border-left: 4px solid #007bff;
-            padding: 15px;
-            margin: 10px 0;
-            border-radius: 5px;
-        }
-
-        .summary-card {
-            background: #d4edda;
-            border-left: 4px solid #28a745;
-            padding: 15px;
-            margin: 10px 0;
-            border-radius: 5px;
-        }
-
-        .message {
-            padding: 12px;
-            border-radius: 6px;
-            margin: 10px 0;
-            text-align: center;
-            font-weight: bold;
-        }
-
-        .success { background: #d4edda; color: #155724; }
-        .error { background: #f8d7da; color: #721c24; }
-        .warning { background: #fff3cd; color: #856404; }
-
-        .back-btn {
-            background: #6c757d;
-            margin-bottom: 20px;
-        }
-
-        @media (max-width: 480px) {
-            .action-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    <title>🏢 Employee Time Log Management</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <!-- MAIN LOGIN -->
         <div id="main-login" class="section active">
-            <h1>⏰ Time Log System</h1>
-            <p style="text-align: center; color: #666; margin-bottom: 30px;">Choose your role</p>
-            
+            <h1>⏰ Employee Time Log Management</h1>
+            <p style="text-align: center; color: #666; margin-bottom: 30px;">Choose your action</p>
+           
             <div class="role-buttons">
                 <button class="role-btn employee-role" onclick="showEmployeeLogin()">
-                    👤 Employee
+                    👤 Employee Login
+                </button>
+                <button class="role-btn register-role" onclick="showEmployeeRegister()">
+                    ➕ Register New Employee
                 </button>
                 <button class="role-btn admin-role" onclick="showAdminLogin()">
                     👨‍💼 Admin
@@ -211,21 +25,53 @@
             </div>
         </div>
 
-        <!-- EMPLOYEE LOGIN -->
+
+        <div id="employee-register" class="section">
+            <button class="back-btn" onclick="showMainLogin()">← Back</button>
+            <h2>👤 Register New Employee</h2>
+           
+            <!-- <label>Employee ID:</label>
+            <input type="text" id="reg-emp-id" placeholder="EMP001" maxlength="10"> -->
+
+
+            <label>Username:</label>
+            <input type="text" id="reg-emp-username" placeholder="johndoe">
+
+
+            <label>Full Name:</label>
+            <input type="text" id="reg-emp-name" placeholder="John Doe">
+
+
+            <label>Password:</label>
+            <input type="password" id="reg-emp-pass" placeholder="Create password">
+
+
+            <label>Confirm Password:</label>
+            <input type="password" id="reg-emp-pass-confirm" placeholder="Confirm password">
+
+
+            <button class="primary-btn" onclick="employeeRegister()">Register Employee</button>
+            <div id="reg-message"></div>
+        </div>
+
+
         <div id="employee-login" class="section">
             <button class="back-btn" onclick="showMainLogin()">← Back</button>
             <h2>👤 Employee Login</h2>
-            
-            <label>Employee ID:</label>
-            <input type="text" id="emp-id" placeholder="EMP001">
+           
+            <label>Username:</label>
+            <input type="text" id="emp-username" placeholder="Enter username">
+
 
             <label>Password:</label>
-            <input type="password" id="emp-pass" placeholder="employee123">
+            <input type="password" id="emp-pass" placeholder="Enter password">
 
-            <button onclick="employeeLogin()">Login</button>
+
+            <button class="primary-btn" onclick="employeeLogin()">Login</button>
+            <div id="login-message"></div>
         </div>
 
-        <!-- EMPLOYEE DASHBOARD -->
+
         <div id="employee-dashboard" class="section">
             <button class="back-btn" onclick="showMainLogin()">← Home</button>
             <div class="user-info">
@@ -233,32 +79,38 @@
                 <button class="logout-btn" onclick="employeeLogout()">Logout</button>
             </div>
 
+
             <div class="action-grid">
-                <button onclick="empAction(1)">🟢 Time In</button>
-                <button onclick="empAction(2)">🔴 Time Out</button>
-                <button onclick="empAction(3)">🍽️ Lunch Start</button>
-                <button onclick="empAction(4)">✅ Lunch End</button>
-                <button onclick="empAction(5)" style="grid-column: span 2;">📊 View Record</button>
+                <button class="action-btn time-in" onclick="empAction(1)">🟢 Time In</button>
+                <button class="action-btn time-out" onclick="empAction(2)">🔴 Time Out</button>
+                <button class="action-btn lunch-start" onclick="empAction(3)">🍽️ Lunch Start</button>
+                <button class="action-btn lunch-end" onclick="empAction(4)">✅ Lunch End</button>
+                <button class="action-btn view-record" onclick="empAction(5)" style="grid-column: span 2;">📊 View Record</button>
             </div>
+
 
             <div class="logs" id="emp-logs">Ready to track your time...</div>
         </div>
 
-        <!-- ADMIN LOGIN -->
+
         <div id="admin-login" class="section">
-            <button class="back-btn" onclick="showMainLogin()">← Back</button>
+            <button class="back-btn"
+                id="_return"
+            >← Back</button>
             <h2>👨‍💼 Admin Login</h2>
-            
-            <label>Admin ID:</label>
-            <input type="text" id="admin-id" placeholder="ADMIN001">
+           
+            <label>Admin User:</label>
+            <input type="text" id="admin-id" placeholder="Enter username">
+
 
             <label>Password:</label>
-            <input type="password" id="admin-pass" placeholder="admin123">
+            <input type="password" id="admin-pass" placeholder="Enter password">
 
-            <button onclick="adminLogin()">Login</button>
+
+            <button class="primary-btn" onclick="adminLogin()">Login</button>
         </div>
 
-        <!-- ADMIN DASHBOARD -->
+
         <div id="admin-dashboard" class="section">
             <button class="back-btn" onclick="showMainLogin()">← Home</button>
             <div class="user-info">
@@ -266,95 +118,204 @@
                 <button class="logout-btn" onclick="adminLogout()">Logout</button>
             </div>
 
+
             <label>🔍 Search Employee ID:</label>
             <input type="text" id="search-emp" placeholder="EMP001">
 
+
             <div class="action-grid">
-                <button onclick="adminViewSingle()">👤 View Single</button>
-                <button onclick="adminViewAll()">👥 View All</button>
-                <button onclick="adminClear()" style="grid-column: span 3;">🗑️ Clear</button>
+                <button class="action-btn" onclick="adminViewSingle()">👤 View Single</button>
+                <button class="action-btn" onclick="adminViewAll()">👥 View All</button>
+                <button class="action-btn" onclick="adminManageUsers()" style="grid-column: span 2;">👥 Manage Users</button>
+                <button class="action-btn" onclick="adminClear()" style="grid-column: span 2;">🗑️ Clear Search</button>
             </div>
+
 
             <div class="logs" id="admin-logs">Admin dashboard ready...</div>
         </div>
     </div>
 
+
     <script>
-        // SEPARATE DATA STORAGE
         let employeeData = JSON.parse(localStorage.getItem('employeeData')) || {};
-        let adminData = JSON.parse(localStorage.getItem('adminData')) || {};
+        let employeeAccounts = JSON.parse(localStorage.getItem('employeeAccounts')) || {};
         let currentEmpUser = null;
         let currentAdminUser = null;
 
-        // PAGE NAVIGATION
+
         function showSection(id) {
             document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
             document.getElementById(id).classList.add('active');
         }
 
-        function showMainLogin() { showSection('main-login'); }
+
+        function generateEmployeeID() {
+        const count = Object.keys(employeeAccounts).length + 1;
+        return 'EMP' + String(count).padStart(3, '0');
+    }
+
+
+        function showMainLogin() {
+            // clearAllMessages();
+            // showSection('main-login');
+            _return.addEventListener("click", window.location.replace("file:///C:/Users/arnol/Documents/index.html"));
+        }
+        let _return = document.getElementById('_return');
+
+
+
+
+        function showEmployeeRegister() { showSection('employee-register'); }
         function showEmployeeLogin() { showSection('employee-login'); }
         function showAdminLogin() { showSection('admin-login'); }
 
-        // EMPLOYEE FUNCTIONS
-        const EMP_PASSWORD = 'employee123';
 
-        function employeeLogin() {
-            const id = document.getElementById('emp-id').value.trim().toUpperCase();
-            const pass = document.getElementById('emp-pass').value;
+        function showMessage(element, message, type) {
+            element.textContent = message;
+            element.className = type;
+        }
+        function employeeRegister() {
+            // const id = document.getElementById('reg-emp-id').value.trim().toUpperCase();
+            const id = generateEmployeeID();
+            const username = document.getElementById('reg-emp-username').value.trim().toLowerCase();
+            const name = document.getElementById('reg-emp-name').value.trim();
+            const pass = document.getElementById('reg-emp-pass').value;
+            const passConfirm = document.getElementById('reg-emp-pass-confirm').value;
+            const messageEl = document.getElementById('reg-message');
 
-            if (!id || !pass) {
-                showEmpMessage('Enter ID & Password', 'error');
+
+            if ( !username || !name || !pass || !passConfirm) {
+                showMessage(messageEl, 'All fields are required!', 'error');
                 return;
             }
 
-            if (pass === EMP_PASSWORD) {
-                currentEmpUser = id;
-                document.getElementById('emp-user').textContent = id;
-                showSection('employee-dashboard');
-                showEmpMessage(Welcome ${id}!, 'success');
-            } else {
-                showEmpMessage('Wrong Password!', 'error');
+
+            if (pass !== passConfirm) {
+                showMessage(messageEl, 'Passwords do not match!', 'error');
+                return;
             }
+
+
+            if (pass.length < 6) {
+                showMessage(messageEl, 'Password must be at least 6 characters!', 'error');
+                return;
+            }
+
+
+            if (employeeAccounts[id]) {
+                showMessage(messageEl, `Employee ID ${id} already exists!`, 'error');
+                return;
+            }
+
+
+            if (Object.values(employeeAccounts).some(acc => acc.username === username)) {
+                showMessage(messageEl, `Username "${username}" already taken!`, 'error');
+                return;
+            }
+
+
+            employeeAccounts[id] = {
+                username: username,
+                name: name,
+                password: pass,
+                created: new Date().toLocaleDateString()
+            };
+
+
+            localStorage.setItem('employeeAccounts', JSON.stringify(employeeAccounts));
+            employeeData[id] = {}; // Initialize empty time data
+
+
+            // showMessage(messageEl, `✅ Employee ${name} (${id}) registered successfully!`, 'success');
+            showMessage(messageEl, `✅ Employee ${name} (${id}) registered successfully!`, 'success');
+            // Clear form after 2 seconds
+            setTimeout(() => {
+                // document.getElementById('reg-emp-id').value = '';
+                document.getElementById('reg-emp-username').value = '';
+                document.getElementById('reg-emp-name').value = '';
+                document.getElementById('reg-emp-pass').value = '';
+                document.getElementById('reg-emp-pass-confirm').value = '';
+                showMainLogin();
+            }, 2000);
         }
+
+
+        // EMPLOYEE LOGIN
+        function employeeLogin() {
+            const username = document.getElementById('emp-username').value.trim().toLowerCase();
+            const pass = document.getElementById('emp-pass').value;
+            const messageEl = document.getElementById('login-message');
+
+
+            if (!username || !pass) {
+                showMessage(messageEl, 'Enter Username & Password', 'error');
+                return;
+            }
+
+
+            const account = Object.entries(employeeAccounts).find(([id, acc]) => acc.username === username);
+            if (!account) {
+                showMessage(messageEl, 'Username not found! Register first.', 'error');
+                return;
+            }
+
+
+            const [id, acc] = account;
+            if (acc.password !== pass) {
+                showMessage(messageEl, 'Wrong Password!', 'error');
+                return;
+            }
+
+
+            currentEmpUser = id;
+            document.getElementById('emp-user').textContent = `${acc.name} (${id})`;
+            showSection('employee-dashboard');
+            showEmpMessage(`Welcome ${acc.name}!`, 'success');
+        }
+
 
         function employeeLogout() {
             currentEmpUser = null;
-            showSection('employee-login');
-            document.getElementById('emp-id').value = '';
+            showMainLogin();
+            document.getElementById('emp-username').value = '';
             document.getElementById('emp-pass').value = '';
-            document.getElementById('emp-logs').innerHTML = '';
         }
 
+
+        // EMPLOYEE TIME TRACKING
         function empAction(action) {
             if (!currentEmpUser) return;
+
 
             const id = currentEmpUser;
             let r = employeeData[id] || {};
 
+
             switch(action) {
                 case 1: // Time In
                     if (r.timeIn) {
-                        showEmpMessage('Already Time In!', 'warning');
+                        showEmpMessage('Already Time In today!', 'warning');
                     } else {
                         employeeData[id] = { timeIn: new Date() };
                         localStorage.setItem('employeeData', JSON.stringify(employeeData));
-                        showEmpMessage('Time In OK!', 'success');
+                        showEmpMessage('🟢 Time In recorded!', 'success');
                     }
                     break;
 
+
                 case 2: // Time Out
                     if (!r.timeIn) {
-                        showEmpMessage('Time In first!', 'warning');
+                        showEmpMessage('Please Time In first!', 'warning');
                     } else if (r.timeOut) {
-                        showEmpMessage('Already Time Out!', 'warning');
+                        showEmpMessage('Already Time Out today!', 'warning');
                     } else {
                         employeeData[id].timeOut = new Date();
                         localStorage.setItem('employeeData', JSON.stringify(employeeData));
                         showEmpRecord(id);
-                        showEmpMessage('Time Out OK!', 'success');
+                        showEmpMessage('🔴 Time Out recorded!', 'success');
                     }
                     break;
+
 
                 case 3: // Lunch Start
                     if (!r.timeIn) {
@@ -364,9 +325,10 @@
                     } else {
                         employeeData[id].lunchStart = new Date();
                         localStorage.setItem('employeeData', JSON.stringify(employeeData));
-                        showEmpMessage('Lunch Started!', 'success');
+                        showEmpMessage('🍽️ Lunch started!', 'success');
                     }
                     break;
+
 
                 case 4: // Lunch End
                     if (!r.lunchStart) {
@@ -376,143 +338,212 @@
                     } else {
                         employeeData[id].lunchEnd = new Date();
                         localStorage.setItem('employeeData', JSON.stringify(employeeData));
-                        showEmpMessage('Lunch Ended!', 'success');
+                        showEmpMessage('✅ Lunch ended!', 'success');
                     }
                     break;
 
-                case 5: // View
-                    if (!employeeData[id]) {
-                        showEmpMessage('No record found!', 'error');
-                    } else {
-                        showEmpRecord(id);
-                    }
+
+                case 5: // View Record
+                    showEmpRecord(id);
                     break;
             }
         }
 
+
         function showEmpRecord(id) {
             const r = employeeData[id];
+            const account = employeeAccounts[id];
             const hours = calcHours(r);
-            document.getElementById('emp-logs').innerHTML = `
+           
+            let html = `
                 <div class="record-card">
-                    <h3>ID: ${id}</h3>
-                    <p>🟢 Time In: ${formatTime(r.timeIn)}</p>
-                    <p>🍽️ Lunch: ${formatTime(r.lunchStart)} - ${formatTime(r.lunchEnd)}</p>
-                    <p>🔴 Time Out: ${formatTime(r.timeOut)}</p>
-                    <p><strong>Total: ${hours} hours</strong></p>
-                </div>
+                    <h3>${account.name} (${id})</h3>
             `;
+           
+            if (r.timeIn) html += `<p>🟢 Time In: ${formatTime(r.timeIn)}</p>`;
+            if (r.lunchStart && r.lunchEnd) html += `<p>🍽️ Lunch: ${formatTime(r.lunchStart)} - ${formatTime(r.lunchEnd)}</p>`;
+            if (r.timeOut) html += `<p>🔴 Time Out: ${formatTime(r.timeOut)}</p>`;
+           
+            html += `<p><strong>Total: ${hours} hours</strong></p></div>`;
+           
+            document.getElementById('emp-logs').innerHTML = html;
         }
+
 
         function showEmpMessage(msg, type) {
             const logs = document.getElementById('emp-logs');
-            logs.innerHTML = <div class="message ${type}">${msg}</div>;
+            logs.innerHTML = `<div class="message ${type}">${msg}</div>`;
             setTimeout(() => {
                 if (type !== 'success') logs.innerHTML = 'Ready to track your time...';
             }, 3000);
         }
 
+
         // ADMIN FUNCTIONS
         const ADMIN_PASSWORD = 'admin123';
+
 
         function adminLogin() {
             const id = document.getElementById('admin-id').value.trim().toUpperCase();
             const pass = document.getElementById('admin-pass').value;
 
-            if (!id || !pass) {
-                showAdminMessage('Enter ID & Password', 'error');
+
+            if (pass !== ADMIN_PASSWORD) {
+                // document.getElementById('admin-logs').innerHTML = '<div class="message_error">Wrong Password!</div>';
+                alert("Wrong username or password")
                 return;
             }
 
-            if (pass === ADMIN_PASSWORD) {
-                currentAdminUser = id;
-                document.getElementById('admin-user').textContent = id;
-                showSection('admin-dashboard');
-                showAdminMessage(Welcome Admin ${id}!, 'success');
-            } else {
-                showAdminMessage('Wrong Password!', 'error');
-            }
+
+            currentAdminUser = id;
+            document.getElementById('admin-user').textContent = id;
+            showSection('admin-dashboard');
         }
+
 
         function adminLogout() {
             currentAdminUser = null;
-            showSection('admin-login');
-            document.getElementById('admin-id').value = '';
-            document.getElementById('admin-pass').value = '';
-            document.getElementById('admin-logs').innerHTML = '';
+            showMainLogin();
         }
+
 
         function adminViewSingle() {
             const id = document.getElementById('search-emp').value.trim().toUpperCase();
             if (!id) return showAdminMessage('Enter Employee ID', 'warning');
 
+
+            const account = employeeAccounts[id];
             const r = employeeData[id];
-            if (!r) {
-                document.getElementById('admin-logs').innerHTML = <div class="record-card error">No record for ${id}</div>;
+           
+            if (!account) {
+                showAdminMessage(`No employee found with ID: ${id}`, 'error');
                 return;
             }
 
-            const hours = calcHours(r);
+
             document.getElementById('admin-logs').innerHTML = `
                 <div class="record-card">
-                    <h3>${id} - ${hours}h</h3>
-                    <p>🟢 ${formatTime(r.timeIn)}</p>
-                    <p>🍽️ ${formatTime(r.lunchStart)}-${formatTime(r.lunchEnd)}</p>
-                    <p>🔴 ${formatTime(r.timeOut)}</p>
+                    <h3>${account.name} (${id})</h3>
+                    ${r.timeIn ? `<p>🟢 Time In: ${formatTime(r.timeIn)}</p>` : '<p>🟢 Time In: Not set</p>'}
+                    ${r.lunchStart ? `<p>🍽️ Lunch Start: ${formatTime(r.lunchStart)}</p>` : '<p>🍽️ Lunch Start: Not set</p>'}
+                    ${r.lunchEnd ? `<p>🍽️ Lunch End: ${formatTime(r.lunchEnd)}</p>` : '<p>🍽️ Lunch End: Not set</p>'}
+                    ${r.timeOut ? `<p>🔴 Time Out: ${formatTime(r.timeOut)}</p>` : '<p>🔴 Time Out: Not set</p>'}
                 </div>
             `;
         }
 
+
         function adminViewAll() {
-            if (Object.keys(employeeData).length === 0) {
-                document.getElementById('admin-logs').innerHTML = '<div class="record-card error">No employee data</div>';
+    if (Object.keys(employeeAccounts).length === 0) {
+        showAdminMessage('No registered employees', 'warning');
+        return;
+    }
+
+
+    let html = '<div class="summary-card"><h3>All Employees (' + Object.keys(employeeAccounts).length + ')</h3></div>';
+
+
+    Object.entries(employeeAccounts).forEach(([id, account]) => {
+        const r = employeeData[id] || {};
+        const totalHours = calcHours(r); // ✅ GET TOTAL HOURS
+
+
+        html += `
+            <div class="record-card">
+                <strong>${id}: ${account.name}</strong><br>
+                <small>
+                    🟢 Time In: ${formatTime(r.timeIn)}<br>
+                    🍽️ Start Lunch: ${formatTime(r.lunchStart)} | 🍽️ End Lunch: ${formatTime(r.lunchEnd)}<br>
+                    🔴 Time Out: ${formatTime(r.timeOut)}<br>
+                    <strong>⏱️ Total Work Hours: ${totalHours} hrs</strong> <!-- ✅ ADDED -->
+                </small>
+            </div>
+        `;
+    });
+
+
+    document.getElementById('admin-logs').innerHTML = html;
+}
+
+
+        function adminManageUsers() {
+            if (Object.keys(employeeAccounts).length === 0) {
+                showAdminMessage('No registered employees', 'warning');
                 return;
             }
 
-            let html = '<div class="summary-card"><h3>All Employees</h3></div>';
-            let totalHours = 0;
 
-            Object.entries(employeeData).forEach(([id, r]) => {
-                const h = parseFloat(calcHours(r));
-                totalHours += h;
+            let html = '<div class="summary-card"><h3>Registered Employees</h3></div>';
+            Object.entries(employeeAccounts).forEach(([id, account]) => {
                 html += `
                     <div class="record-card">
-                        <strong>${id}: ${h.toFixed(1)}h</strong><br>
-                        ${formatTime(r.timeIn)} → ${formatTime(r.timeOut)}
+                        <strong>${id}</strong> - ${account.name} (${account.username})<br>
+                        <small>Created: ${account.created}</small>
                     </div>
                 `;
             });
-
-            html += <div class="summary-card"><strong>Total: ${totalHours.toFixed(1)}h</strong></div>;
             document.getElementById('admin-logs').innerHTML = html;
         }
+
 
         function adminClear() {
             document.getElementById('admin-logs').innerHTML = 'Admin dashboard ready...';
             document.getElementById('search-emp').value = '';
         }
 
+
         function showAdminMessage(msg, type) {
             const logs = document.getElementById('admin-logs');
-            logs.innerHTML = <div class="message ${type}">${msg}</div>;
+            logs.innerHTML = `<div class="message ${type}">${msg}</div>`;
             setTimeout(() => {
                 logs.innerHTML = 'Admin dashboard ready...';
             }, 3000);
         }
 
-        // UTILITIES
+
+        // UTILITY FUNCTIONS
         function formatTime(t) {
             return t ? new Date(t).toLocaleString() : 'Not set';
         }
 
+
         function calcHours(r) {
-            if (!r.timeIn || !r.timeOut) return 0;
-            let total = (r.timeOut - r.timeIn) / 3600000;
-            if (r.lunchStart && r.lunchEnd) {
-                total -= (r.lunchEnd - r.lunchStart) / 3600000;
-            }
-            return total.toFixed(2);
+    if (!r.timeIn || !r.timeOut) return '0.00';
+
+
+    let timeIn = new Date(r.timeIn);
+    let timeOut = new Date(r.timeOut);
+
+
+    if (isNaN(timeIn) || isNaN(timeOut)) return '0.00';
+
+
+    let total = (timeOut - timeIn) / 3600000;
+
+
+    if (r.lunchStart && r.lunchEnd) {
+        let lunchStart = new Date(r.lunchStart);
+        let lunchEnd = new Date(r.lunchEnd);
+
+
+        if (!isNaN(lunchStart) && !isNaN(lunchEnd)) {
+            total -= (lunchEnd - lunchStart) / 3600000;
         }
+    }
+
+
+    if (isNaN(total) || total < 0) return '0.00';
+
+
+    return total.toFixed(2);
+}
     </script>
 </body>
 </html>
+
+
+
+
+
+
+
